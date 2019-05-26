@@ -80,7 +80,7 @@
       function bonk(e) {
         if (!e.isTrusted) return; // for cheaters --> actual click needed, not simulated js click
         score++;
-        this.classList.remove("up");
+        this.parentNode.classList.remove("up");
         scoreBoard.textContent = score;
       }
 
