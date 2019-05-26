@@ -41,6 +41,7 @@
       const moles = document.querySelectorAll(".mole");
       let lastHole;
       let timeUp = false;
+      let score = 0;
 
       function randomTime(min, max) {
         return Math.round(Math.random() * (max - min) + min);
@@ -58,9 +59,9 @@
       }
 
       function peep() {
-        const time = randomTime(200, 1000);
-        const hold = randomHole(holes);
-        console.log(time, hole);
+        const time = randomTime(300, 1000);
+        const hole = randomHole(holes);
+        // console.log(time, hole);
         hole.classList.add("up");
         setTimeout(() => {
           hole.classList.remove("up");
@@ -71,12 +72,13 @@
       function startGame() {
         scoreBoard.textContent = 0;
         timeUp = false;
+        score = 0;
         peep();
         setTimeout(() => (timeUp = true), 10000);
       }
 
       function bonk(e) {
-        if (!e.isTrusted) return; // for cheaters
+        if (!e.isTrusted) return; // for cheaters --> actual click needed, not simulated js click
         score++;
         this.classList.remove("up");
         scoreBoard.textContent = score;
